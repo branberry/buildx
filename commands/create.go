@@ -19,6 +19,7 @@ type createOptions struct {
 	name                string
 	driver              string
 	nodeName            string
+	from                string
 	platform            []string
 	actionAppend        bool
 	actionLeave         bool
@@ -109,6 +110,7 @@ func createCmd(dockerCli command.Cli) *cobra.Command {
 	flags.StringArrayVar(&options.platform, "platform", []string{}, "Fixed platforms for current node")
 	flags.StringArrayVar(&options.driverOpts, "driver-opt", []string{}, "Options for the driver")
 	flags.StringVar(&options.buildkitdFlags, "buildkitd-flags", "", "BuildKit daemon flags")
+	flags.StringVar(&options.from, "from", "", "BuildKit Config file")
 
 	// we allow for both "--config" and "--buildkitd-config", although the latter is the recommended way to avoid ambiguity.
 	flags.StringVar(&options.buildkitdConfigFile, "buildkitd-config", "", "BuildKit daemon config file")
